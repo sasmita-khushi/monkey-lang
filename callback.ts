@@ -1,23 +1,24 @@
 type callback = (x: string) => void;
+// to provide emp ID
 function A(cb: callback, name: string) {
-  console.log("trying to finout employee id:", name);
+  console.log("trying to findout employee id:", name);
   setTimeout(() => {
-    cb("123");
+    cb("224");
   }, 2000);
 }
-
+// return pan number form id
 function B(cb: callback, id: string) {
-  console.log("looking for...pan no. form id", id);
+  console.log("looking...for pan number of id: ", id);
   setTimeout(() => {
-    cb("acahy2002");
-  }, 2500);
-}
-
-function C(cb: callback, panNumber: string) {
-  console.log("incometaxfrom", panNumber);
-  setTimeout(() => {
-    cb("2000200");
+    cb("ADX23457");
   }, 3000);
+}
+// return income Tax amount from panNumber
+function C(cb: callback, pan: string) {
+  console.log("looking... for Taxamount of pan: ", pan);
+  setTimeout(() => {
+    cb("200000");
+  }, 2500);
 }
 
 A((id: string) => {
