@@ -22,7 +22,18 @@ export enum TokenTypes {
 
 //type TokenType = (typeof TokenTypes)[keyof typeof TokenTypes];
 
-export type Token = {
+export class Token {
   type: TokenTypes;
   value: string;
-};
+  constructor(type: TokenTypes, value?: string) {
+    this.type = type;
+    if (value) {
+      this.value = value;
+    } else {
+      this.value = type;
+    }
+  }
+}
+let p: Token = new Token(TokenTypes.ASSIGN, "pp");
+console.log(p.type);
+console.log(p.value);

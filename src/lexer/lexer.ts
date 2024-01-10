@@ -1,5 +1,4 @@
-import { TokenTypes } from "../token/token";
-import type { Token } from "../token/token";
+import { TokenTypes, Token } from "../token/token";
 
 export default class Lexer {
   input: string;
@@ -21,38 +20,47 @@ export default class Lexer {
     } else {
       this.ch = null;
     }
+    return this.ch;
   }
 
+  private isLetter(ch: string): boolean {
+    let code = ch.charCodeAt(0);
+    if ((code >= 97 && code <= 122) || (code <= 65 && code <= 90)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   nextToken(): Token {
     let token: Token;
-    this.readChar();
-    switch (this.ch) {
+    let ch = this.readChar();
+    switch (ch) {
       case TokenTypes.ASSIGN:
-        token = { type: TokenTypes.ASSIGN, value: TokenTypes.ASSIGN };
+        token = new Token(TokenTypes.ASSIGN);
         break;
       case TokenTypes.SEMICOLON:
-        token = { type: TokenTypes.SEMICOLON, value: TokenTypes.SEMICOLON };
+        token = new Token(TokenTypes.SEMICOLON);
         break;
       case TokenTypes.COMMA:
-        token = { type: TokenTypes.COMMA, value: TokenTypes.COMMA };
+        token = new Token(TokenTypes.COMMA);
         break;
       case TokenTypes.PLUS:
-        token = { type: TokenTypes.PLUS, value: TokenTypes.PLUS };
+        token = new Token(TokenTypes.PLUS);
         break;
       case TokenTypes.LPAREN:
-        token = { type: TokenTypes.LPAREN, value: TokenTypes.LPAREN };
+        token = new Token(TokenTypes.LPAREN);
         break;
       case TokenTypes.RPAREN:
-        token = { type: TokenTypes.RPAREN, value: TokenTypes.RPAREN };
+        token = new Token(TokenTypes.RPAREN);
         break;
       case TokenTypes.LBRACE:
-        token = { type: TokenTypes.LBRACE, value: TokenTypes.LBRACE };
+        token = new Token(TokenTypes.LBRACE);
         break;
       case TokenTypes.RBRACE:
-        token = { type: TokenTypes.RBRACE, value: TokenTypes.RBRACE };
+        token = new Token(TokenTypes.RBRACE);
         break;
       default:
-        token = { type: TokenTypes.ILLEGAL, value: TokenTypes.ILLEGAL };
+        token = new Token(TokenTypes.ILLEGAL);
         break;
     }
     return token;
