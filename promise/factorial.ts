@@ -25,5 +25,5 @@ let value1 = process.argv[5];
 obj[prop] = value;
 obj[prop1] = value1;
 console.log(obj);
-let arr = "khushi".split("");
-console.log(arr);
+// let arr = "khushi".split("");
+// console.log(arr);

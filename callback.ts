@@ -21,6 +21,7 @@ function C(cb: callback, pan: string) {
   }, 2500);
 }
 
+//nested callback:
 A((id: string) => {
   console.log("id is", id);
   B((panNumber: string) => {
